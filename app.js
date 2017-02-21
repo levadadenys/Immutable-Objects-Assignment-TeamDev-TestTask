@@ -1,7 +1,7 @@
 const str = `{
     "users":[
         {
-            "name":"Vasya",
+            "name":null,
             "groups":[
                 {
                 "name":"Users"
@@ -35,7 +35,8 @@ function createImmutableObjectFromJson (json) {
         const obj = JSON.parse(json);
 
         // \/ Because if we put numbers into JSON.parse it will parse it as a number and won`t make any crashes \/
-        if (typeof(obj) !== 'object') throw new Error ('There is a number instead of a JSON object'); 
+        if (typeof(obj) !== 'object') throw new Error ('There is a number instead of a JSON object');
+        if (obj === null) throw new Error ('Invalid JSON (Equals null)');
         
         makeInnerObjectsImmutable(obj);
         return obj;

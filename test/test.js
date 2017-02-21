@@ -304,6 +304,11 @@ describe('Checking Invalid JSONs', function() {
         
     });
 
+    it('Invalid (JSON equals null / null instead of JSON)', function() {        
+        assert.throws(() => createImmutableObjectFromJson('null'), Error);
+        
+    });
+
     it('Invalid JSON (SyntaxError)', function() {
         const check = () => {
             createImmutableObjectFromJson(`{
